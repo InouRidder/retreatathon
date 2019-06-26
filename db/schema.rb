@@ -33,7 +33,16 @@ ActiveRecord::Schema.define(version: 20190626132239) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+    create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_taggings_on_product_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
+
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,5 +55,8 @@ ActiveRecord::Schema.define(version: 20190626132239) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "taggings", "products"
+  add_foreign_key "taggings", "tags"
 
 end
