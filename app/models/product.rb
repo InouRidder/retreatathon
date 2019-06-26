@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+	has_many :taggings
+	has_many :tags, through: :taggings
+  
   include PgSearch
   pg_search_scope :global_search,
     against:[  
@@ -10,8 +13,11 @@ class Product < ApplicationRecord
 						 :user_core_journey,
 						 :originality,
 						],
-		associated_against: {},
+		associated_against: {
+			tag: [:title],
+		},
     using: {
       tsearch: { prefix: true }
     }
 end
+
