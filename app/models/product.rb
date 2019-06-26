@@ -24,7 +24,7 @@ class Product < ApplicationRecord
   end
 
   def taggify
-    Taggifyer.run(self)
+    Taggifyer.new(self).run
   end
 
 end

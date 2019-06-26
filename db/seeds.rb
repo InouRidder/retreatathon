@@ -1,4 +1,8 @@
-require 'csv' 
+require 'csv'
+
+CSV.foreach(Rails.root.join('db/tags.csv')) do |row|
+  Tag.create(title: row[0])
+end
 
 CSV.foreach(Rails.root.join('db/products.csv'), headers: true, header_converters: :symbol) do |row|
   product = Product.find_or_create_by(name: row[:name]) do |product|
@@ -15,3 +19,4 @@ CSV.foreach(Rails.root.join('db/products.csv'), headers: true, header_converters
   end
   product.members.create(first_name: row[:first_name], last_name: row[:last_name])
 end
+
