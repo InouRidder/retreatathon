@@ -8,7 +8,7 @@
   <section class="product-filters">
     <div class="search">
       <label>Search by</label>
-      <input type="text" name="" placeholder="product name, team members, city...">
+      <input tabindex="1" id="autoComplete" type="text" name="" placeholder="product name, team members, city...">
     </div>
     <div class="search">
       <label>Add some tags</label>
@@ -20,17 +20,17 @@
 <div class="wrapper">
   <section>  
     <ul class="product-list">
-      
+      <% @products.each do |product| %>
       <a href="#">
         <li class="product">
           <%= image_tag 'test.jpg', class: 'product-thumbnail'%>
           <div class="product-details">
             <div>
-              <span class="product-name">Find a way</span>
-              <i>Paris #250</i>
+              <span class="product-name"><%= product.name %></span>
+              <i><%= product.batch %></i>
             <div>
 
-            <p class="product-tagline">La creme du coaching</p>
+            <p class="product-tagline"><%= product.tagline %></p>
 
             <div>
               <i>Built by</i>
@@ -49,64 +49,8 @@
             </ul>
         </li>
       </a>
+      <% end %>
 
-      <a href="#">
-        <li class="product">
-          <%= image_tag 'test.jpg', class: 'product-thumbnail'%>
-          <div class="product-details">
-            <div>
-              <span class="product-name">Find a way</span>
-              <i>Paris #250</i>
-            <div>
-
-            <p class="product-tagline">La creme du coaching</p>
-
-            <div>
-              <i>Built by</i>
-              <ul class="students">
-                <li class="student">Primo Augustus</li>
-                <li class="student">Primo Augustus</li>
-                <li class="student">Primo Augustus</li>
-                <li class="student">Primo Augustus</li>
-              </ul>
-            </div>
-
-            <ul class="tags">
-              <li class="tag">Money</li>
-              <li class="tag">Events</li>
-              <li class="tag">Travel</li>
-            </ul>
-        </li>
-      </a>
-
-      <a href="#">
-        <li class="product">
-          <%= image_tag 'test.jpg', class: 'product-thumbnail'%>
-          <div class="product-details">
-            <div>
-              <span class="product-name">Find a way</span>
-              <i>Paris #250</i>
-            <div>
-
-            <p class="product-tagline">La creme du coaching</p>
-
-            <div>
-              <i>Built by</i>
-              <ul class="students">
-                <li class="student">Primo Augustus</li>
-                <li class="student">Primo Augustus</li>
-                <li class="student">Primo Augustus</li>
-                <li class="student">Primo Augustus</li>
-              </ul>
-            </div>
-
-            <ul class="tags">
-              <li class="tag">Money</li>
-              <li class="tag">Events</li>
-              <li class="tag">Travel</li>
-            </ul>
-        </li>
-      </a>
     </ul>
   </section>
 </div>

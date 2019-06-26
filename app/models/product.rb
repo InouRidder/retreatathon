@@ -23,7 +23,7 @@ class Product < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  after_create :fetch_gems
+  #after_create :fetch_gems
 
   private
 
