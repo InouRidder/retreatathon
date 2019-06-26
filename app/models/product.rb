@@ -3,7 +3,7 @@ class Product < ApplicationRecord
 	has_many :tags, through: :taggings
   
   include PgSearch
-  pg_search_scope :global_search,
+  pg_search_scope :search,
     against:[  
 						 :name,
 						 :customer_segment,
@@ -14,7 +14,7 @@ class Product < ApplicationRecord
 						 :originality,
 						],
 		associated_against: {
-			tag: [:title],
+			tags: [:title],
 		},
     using: {
       tsearch: { prefix: true }
