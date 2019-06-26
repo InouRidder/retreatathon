@@ -1,1 +1,216 @@
 // Specific CSS for your home-page
+:root {
+  /* COLORS */
+  --black: #0E0000;
+  --light-grey: #F2F2F2;
+  --mid-grey: #FAFAFA;
+  --dark-grey: #D8D8D8;
+  --green: #1ECD97;
+  --green-darker: #39b082;
+  --blue: #59d;
+  --blue-darker: #48c;
+  --anthracite: #555;
+  --anthracite-darker: #444;
+  --red: #d33;
+  --red-darker: #c22;
+  --orange: #FF9D46;
+  --orange-darker: #FB8318;
+
+  /* TEXT COLOR AND FONT-SIZE */
+  --basic-text-color: #333333;
+  --thin-font-size: 12px;
+  --small-font-size: 14px;
+  --mid-font-size: 16px;
+  --large-font-size: 18px;
+  --extra-large-font-size: 24px;
+  --main-title: 42px;
+
+  /* CONTAINER */
+  --admin-sidebar-width: 260px;
+  --admin-header-height: 40px;
+  --admin-grid-gap: 20px;
+
+  /* BUTTON */
+  --button-height: 40px;
+
+  /* EFFECTS */
+  --box-shadow: 0 15px 35px rgba(126, 87, 88, 0.1), 0 5px 15px rgba(0,0,0,.07);
+}
+
+body {
+  position: relative;
+  background-color: #fcf5e8;
+  padding-bottom:  80px;
+  font-family: 'Graphik-Light';
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 420px;
+    z-index: -1;
+    background-color: white;
+  }
+
+  h1 {
+    font-size: var(--main-title);
+    font-family: "CircularStd-Black";
+    line-height: 1.1em;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  i {
+    font-style: normal;
+    font-size: var(--thin-font-size);
+  }
+
+  a, a:hover {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.illustration {
+  position: absolute;
+  top: 155px;
+  z-index: 0;
+}
+
+.wrapper {
+  position: relative;
+  padding: 60px 0 0;
+  margin: 0 auto;
+  max-width: 1140px;
+  z-index: 2;
+}
+
+.header-details {
+  display: flex;
+
+  .logo {
+    margin-right: 30px;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.product-filters  {
+  display: flex;
+  justify-content: space-between;
+  margin: 180px 0 0;
+
+  label {
+    font-size: var(--small-font-size);
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  input {
+    padding: 12px 18px;
+    min-height: 80px;
+    font-size: 18px;
+    border-radius: 3px;
+    border: 1px solid #cdcdcd;
+    box-shadow: var(--box-shadow);
+  }
+
+  input:focus {
+    border: 1px solid #959595;
+  }
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+  }
+}
+
+.product-list {
+  padding: 0;
+  margin: 0;
+}
+
+.product {
+  display: flex;
+  position: relative;
+  padding: 30px 0;
+  border-bottom: 1px solid #cdcdcd;
+
+  &:hover {
+    cursor: pointer;
+
+    .product-name {
+      text-decoration: underline;
+    }
+  }
+
+  .product-thumbnail {
+    width: 240px;
+    height: 140px;
+    border-radius: 3px;
+    background-color: #cdcdcd;
+  }
+
+  .product-details {
+    display: flex;
+    position: relative;
+    width: 100%;
+    margin-left: 30px;
+  }
+
+  span.product-name {
+    font-family: "CircularStd-Black";
+    line-height: 1.1em;
+    font-size: 26px;
+  }
+
+  p.product-tagline {
+    max-width: 560px;
+    min-height: 48px;
+  }
+
+  .students {
+    display: flex;
+
+    .student:not(:last-child) {
+      position: relative;
+      margin-right: 26px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        height: 16px;
+        width: 1px;
+        top: 4px;
+        right: -15px;
+        background-color: #cdcdcd;
+      }
+    }
+  }
+
+  .tags {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .tag {
+      padding: 6px 8px;
+      border-radius: 3px;
+      background-color: black;
+      font-size: var(--small-font-size);
+      color: white;
+    }
+
+    .tag:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
