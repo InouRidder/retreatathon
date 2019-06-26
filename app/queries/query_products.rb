@@ -14,14 +14,14 @@ class QueryProducts
 
   def filter_by(filters, collection)
     # In case of searching by gem AND another gem
-    # filter = filters.join(" ")
-    # collection.search(filter)
-
-    # In case of searching by one gem OR other gem
-    results = []
-    filters.each do |filter|
-      results << collection.search(filter)
-    end
-    results.flatten
+    filter = filters.join(" ")
+    collection.search(filter)
+    
+    # # In case of searching by one gem OR other gem
+    # results = []
+    # filters.each do |filter|
+    #   results << collection.search(filter)
+    # end
+    # results.flatten
   end
 end
