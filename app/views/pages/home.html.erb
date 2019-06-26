@@ -3,7 +3,7 @@
 <header class="wrapper">
   <div class="header-details">
     <%= image_tag 'logo.svg', class: 'logo' %>
-    <h1>Search over 1280+ apps<br>developed by our students</h1>
+    <h1>Search over <%= ((@number_of_products / 10) * 10) %>+ apps<br>developed by our students</h1>
   </div>
   <section class="product-filters">
     <div class="search">
@@ -19,39 +19,7 @@
   
 <div class="wrapper">
   <section>  
-    <ul class="product-list">
-      <% @products.each do |product| %>
-      <a href="#">
-        <li class="product">
-          <%= image_tag 'test.jpg', class: 'product-thumbnail'%>
-          <div class="product-details">
-            <div>
-              <span class="product-name"><%= product.name %></span>
-              <i><%= product.batch %></i>
-            <div>
-
-            <p class="product-tagline"><%= product.tagline %></p>
-
-            <div>
-              <i>Built by</i>
-              <ul class="students">
-                <li class="student">Primo Augustus</li>
-                <li class="student">Primo Augustus</li>
-                <li class="student">Primo Augustus</li>
-                <li class="student">Primo Augustus</li>
-              </ul>
-            </div>
-
-            <ul class="tags">
-              <li class="tag">Money</li>
-              <li class="tag">Events</li>
-              <li class="tag">Travel</li>
-            </ul>
-        </li>
-      </a>
-      <% end %>
-
-    </ul>
+    <%= render 'pages/products', products: @products %>
   </section>
 </div>
 
