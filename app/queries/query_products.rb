@@ -8,6 +8,7 @@ class QueryProducts
 
   def call
     @collection = filter_by_tags(params[:tags], collection) if params[:tags]
+    @collection = filter_by_gems(params[:gems], collection) if params[:gems]
     @collection
   end
 
@@ -16,4 +17,6 @@ class QueryProducts
   def filter_by_tags(tags, collection)
   end
 
+  def filter_by_gems(gems, collection)
+  end
 end
