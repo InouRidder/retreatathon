@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190626132633) do
+ActiveRecord::Schema.define(version: 20190626132239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,12 @@ ActiveRecord::Schema.define(version: 20190626132633) do
     t.text "gems", default: [], array: true
   end
 
-  create_table "taggings", force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
+    create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id"
     t.bigint "product_id"
     t.datetime "created_at", null: false
@@ -38,11 +43,6 @@ ActiveRecord::Schema.define(version: 20190626132633) do
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,4 +58,5 @@ ActiveRecord::Schema.define(version: 20190626132633) do
 
   add_foreign_key "taggings", "products"
   add_foreign_key "taggings", "tags"
+
 end
