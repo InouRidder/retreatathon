@@ -3,7 +3,7 @@
 <header class="wrapper">
   <div class="header-details">
     <%= image_tag 'logo.svg', class: 'logo' %>
-    <h1>Search over 1280+ apps<br>developed by our students</h1>
+    <h1>Search over <%= ((@number_of_products / 10) * 10) %>+ apps<br>developed by our students</h1>
   </div>
   <section class="product-filters">
     <div class="search">

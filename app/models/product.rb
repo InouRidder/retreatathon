@@ -1,21 +1,13 @@
 class Product < ApplicationRecord
-
+  paginates_per 12
   has_many :members
 	has_many :taggings
 	has_many :tags, through: :taggings
+  SEARCHABLE_ATTR = [:name, :customer_segment, :tagline, :pain, :solution, :user_core_journey, :originality]
 
   include PgSearch
   pg_search_scope :search,
-    against:[
-						 :name,
-						 :customer_segment,
-						 :tagline,
-						 :pain,
-						 :solution,
-						 :user_core_journey,
-						 :originality,
-						 :gems
-						],
+    against: SEARCHABLE_ATTR,
 		associated_against: {
 			tags: [:title],
 		},
@@ -23,12 +15,16 @@ class Product < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  after_create :fetch_gems
+  after_create :fetch_gems, :taggify
 
   private
 
   def fetch_gems
     GemTagger.new(product: self, interface: FetchGems).tag if github_repository_url.present?
+  end
+
+  def taggify
+    Taggifyer.new(self).run
   end
 
 end
