@@ -1,5 +1,8 @@
 class Product < ApplicationRecord
 
+	has_many :taggings
+	has_many :tags, through: :taggings
+
   after_create :fetch_gems
 
   private
@@ -7,4 +10,5 @@ class Product < ApplicationRecord
   def fetch_gems
     GemTagger.new(project: self, interface: FetchGems).tag if project.github_repository_url.present?
   end
+
 end
