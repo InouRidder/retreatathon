@@ -88,7 +88,6 @@ body {
   padding: 60px 0 0;
   margin: 0 auto;
   max-width: 1140px;
-  z-index: 2;
 }
 
 .header-details {
@@ -126,6 +125,8 @@ body {
   }
 
   .search {
+    position: relative;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     width: 48%;
@@ -219,5 +220,21 @@ body {
     .tag:not(:last-child) {
       margin-right: 8px;
     }
+  }
+}
+
+
+.search #autoComplete_results_list {
+  position: absolute;
+  width: 100%;
+  top: 104px;
+  margin: 0;
+  overflow: auto;
+  z-index: 1000;
+
+  li {
+    margin: 0;
+    max-width: initial;
+    z-index: 1000;
   }
 }

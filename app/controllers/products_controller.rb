@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   
   def autocomplete
     render json: {
-      products: QueryProducts.new({ params: { queries: params[:q] } ).call.map(&:name)
+      products: QueryProducts.new({ params: { queries: [params[:q]] } }).call.map(&:name)
     }
   end
 

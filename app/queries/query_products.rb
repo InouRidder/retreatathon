@@ -7,16 +7,15 @@ class QueryProducts
   end
 
   def call
-    @collection = filter_by_tags(params[:tags], @collection) if params[:tags]
-    @collection = filter_by_queries(params[:queries], @collection) if params[:queries]
+    @collection = filter_by_tags(params[:tags], @collection) if params[:tags] && !params[:tags].blank?
+    @collection = filter_by_queries(params[:queries], @collection) if params[:queries] && !params[:queries].blank?
     @collection
   end
 
   private
 
   def filter_by_tags(tags, collection)
-    tag = tags.join(" ")
-    collection.search(tag)
+    collection.search(tags)
   end
 
   def filter_by_queries(queries, collection)
@@ -29,10 +28,14 @@ class QueryProducts
     
     # # In case of searching by one query OR other query
     results = []
-    queries.each do |query|
-      results << collection.search(query)
+    if queries.kind_of? Array 
+      queries.each do |query|
+        results << collection.search(query)
+      end
+      results.flatten
+    else
+      collection.search(queries)
     end
-    results.flatten
   end
 
 end

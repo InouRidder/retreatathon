@@ -5,16 +5,18 @@
     <%= image_tag 'logo.svg', class: 'logo' %>
     <h1>Search over <%= ((@number_of_products / 10) * 10) %>+ apps<br>developed by our students</h1>
   </div>
-  <section class="product-filters">
-    <div class="search">
-      <label>Search by</label>
-      <input tabindex="1" id="autoComplete" type="text" name="" placeholder="product name, team members, city...">
-    </div>
-    <div class="search">
-      <label>Add some tags</label>
-      <input type="text" name="" placeholder="Anything specific?">
-    </div>
-  </section>
+  <%= form_tag root_path, method: :get, id: "searchForm" do %>
+    <section class="product-filters">
+      <div class="search">
+        <label>Search by</label>
+        <input tabindex="1" autocomplete="off" id="autoComplet" type="text" name="queries" placeholder="product name, team members, city...">
+      </div>
+      <div class="search">
+        <label>Add some tags</label>
+        <input type="text" name="tags" placeholder="Anything specific?">
+      </div>
+    </section>
+  <% end %>
 </header>
   
 <div class="wrapper">

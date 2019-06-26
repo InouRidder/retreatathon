@@ -8,14 +8,13 @@ import "@tarekraafat/autocomplete.js/dist/css/autoComplete.css";
 new autoComplete({
   data: {                             
       src: async () => {
-          var query = document.querySelector("#autoComplete").value;
+          var query = document.querySelector("#autoComplet").value;
 
           // Fetch External Data Source
           const source = await fetch(`/autocomplete?q=${query}`);
           // Format data into JSON
 
           const data = await source.json();
-          console.log(data)
           // Return Fetched data
           return data.products;
       },
@@ -23,7 +22,7 @@ new autoComplete({
       cache: false
   },
   placeHolder: "product name, team members, city...",     // Place Holder text                 | (Optional)
-  selector: "#autoComplete",           // Input field selector              | (Optional)
+  selector: "#autoComplet",           // Input field selector              | (Optional)
   threshold: 2,                        // Min. Chars length to start Engine | (Optional)
   debounce: 300,                       // Post duration for engine to start | (Optional)
   searchEngine: "strict",              // Search Engine type/mode           | (Optional)
@@ -33,7 +32,7 @@ new autoComplete({
           var resultsListID = "products_List";
           return resultsListID;
       },
-      destination: document.querySelector("#autoComplete"),
+      destination: document.querySelector("#autoComplet"),
       position: "afterend",
       element: "ul"
   },
@@ -53,6 +52,8 @@ new autoComplete({
       document.querySelector("#autoComplete_results_list").appendChild(result);
   },
   onSelection: feedback => {  
-      console.log('On select');
+    console.log('On select', feedback.selection.value);
+    document.querySelector("#autoComplet").value = feedback.selection.value;
+    document.querySelector("#searchForm").submit();
   }
 });
