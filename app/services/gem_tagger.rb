@@ -1,14 +1,14 @@
 class GemTagger
-  attr_accessor :product, :gem_fetcher
+  attr_accessor :product, :interface
   attr_reader :gems
 
   def initialize(attributes)
     @product = attributes[:product]
-    @gem_fetcher = attributes[:gem_fetcher]
+    @interface = attributes[:interface]
   end
 
   def tag
-    @gems ||= gem_fetcher.fetch(product.github_repository_url)
+    @gems ||= interface.fetch(product.github_repository_url)
     product.gems = gems
     product.save
   end

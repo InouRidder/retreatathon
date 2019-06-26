@@ -14,10 +14,14 @@ class FetchGems
     private
 
     def fetch_gems(url)
-      url = url_to_raw_link(url)
-      response = fetch_gemfile_text(url)
-      gems = text_to_gems(response)
-      gems - base_gems | base_gems - gems
+      begin
+        url = url_to_raw_link(url)
+        response = fetch_gemfile_text(url)
+        gems = text_to_gems(response)
+        gems - base_gems | base_gems - gems
+      rescue
+        puts "URL: #{url} | 404 - Not found"
+      end
     end
 
     def url_to_raw_link(url)
