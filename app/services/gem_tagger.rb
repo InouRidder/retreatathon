@@ -1,5 +1,3 @@
-require "ostruct"
-
 class GemTagger
   attr_accessor :product, :gem_fetcher
   attr_reader :gems
