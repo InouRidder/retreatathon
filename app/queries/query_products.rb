@@ -7,16 +7,21 @@ class QueryProducts
   end
 
   def call
-    @collection = filter_by_tags(params[:tags], collection) if params[:tags]
-    @collection = filter_by_gems(params[:gems], collection) if params[:gems]
-    @collection
+    new_collection = filter_by(@params, @collection) # if params[:tags]
   end
 
   private
 
-  def filter_by_tags(tags, collection)
-  end
-
-  def filter_by_gems(gems, collection)
+  def filter_by(filters, collection)
+    # In case of searching by gem AND another gem
+    filter = filters.join(" ")
+    collection.search(filter)
+    
+    # # In case of searching by one gem OR other gem
+    # results = []
+    # filters.each do |filter|
+    #   results << collection.search(filter)
+    # end
+    # results.flatten
   end
 end
