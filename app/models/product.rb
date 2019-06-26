@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   private
 
   def fetch_gems
-    GemTagger.new(project: self, interface: FetchGems).tag if project.github_repository_url.present?
+    GemTagger.new(product: self, interface: FetchGems).tag if github_repository_url.present?
   end
 
 end
