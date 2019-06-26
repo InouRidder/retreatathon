@@ -1,18 +1,18 @@
 require "ostruct"
 
 class GemTagger
-  attr_accessor :project, :gem_fetcher
+  attr_accessor :product, :gem_fetcher
   attr_reader :gems
 
   def initialize(attributes)
-    @project = attributes[:project]
+    @product = attributes[:product]
     @gem_fetcher = attributes[:gem_fetcher]
   end
 
   def tag
-    @gems ||= gem_fetcher.fetch(project.github_repository_url)
-    project.gems = gems
-    project.save
+    @gems ||= gem_fetcher.fetch(product.github_repository_url)
+    product.gems = gems
+    product.save
   end
 end
 
