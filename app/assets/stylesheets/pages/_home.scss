@@ -135,6 +135,12 @@ body {
 .product-list {
   padding: 0;
   margin: 0;
+
+  .pagination {
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 0;
+  }
 }
 
 .product {
@@ -153,6 +159,7 @@ body {
 
   .product-thumbnail {
     width: 240px;
+    min-width: 240px;
     height: 140px;
     border-radius: 3px;
     background-color: #cdcdcd;

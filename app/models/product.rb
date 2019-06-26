@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-
+  paginates_per 12
   has_many :members
 	has_many :taggings
 	has_many :tags, through: :taggings
