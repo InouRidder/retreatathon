@@ -1,0 +1,32 @@
+<ul class="product-list">
+  <% products.each do |product| %>
+    <%= link_to '#', target: '_blank' do %>
+      <li class="product">
+        <% if product.cover_picture %>
+          <%= image_tag product.cover_picture, class: 'product-thumbnail' %>
+        <% else %>
+          <img src="" class="product-thumbnail">
+        <% end %>
+        <div class="product-details">
+          <div>
+            <span class="product-name"><%= product.name%></span>
+            <i><%= product.batch%></i>
+          <div>
+          <p class="product-tagline"><%= product.tagline%></p>
+          <div>
+            <i>Built by</i>
+            <ul class="students">
+              <% product.members.each do |member| %>
+                <li class="student"><%= member.first_name%> <%= member.last_name%></li>
+              <% end %>
+            </ul>
+          </div>
+          <ul class="tags">
+            <% product.tags.take(3).each do |tag| %>
+              <li class="tag"><%= tag.title%></li>
+            <% end %>
+          </ul>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

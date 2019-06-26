@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'json'
+gem 'kaminari'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
