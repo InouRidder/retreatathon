@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20190626142615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "host"
-    t.string "batch"
     t.text "gems", default: [], array: true
+    t.string "batch"
     t.integer "batch_number"
     t.string "cover_picture"
   end
