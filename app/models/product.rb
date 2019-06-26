@@ -14,6 +14,7 @@ class Product < ApplicationRecord
 						 :solution,
 						 :user_core_journey,
 						 :originality,
+						 :gems
 						],
 		associated_against: {
 			tags: [:title],
