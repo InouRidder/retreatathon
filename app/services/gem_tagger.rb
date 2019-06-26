@@ -1,5 +1,4 @@
 require "ostruct"
-require_relative 'fetch_gems' # TODO: Remove!
 
 class GemTagger
   attr_accessor :project, :gem_fetcher

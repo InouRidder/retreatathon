@@ -1,6 +1,5 @@
 require 'open-uri'
-require 'json'
-require 'pry'
+
 class FetchGems
   class << self
 
