@@ -4,6 +4,9 @@ import autoComplete from "@tarekraafat/autocomplete.js";
 import "@tarekraafat/autocomplete.js/dist/css/autoComplete.css";
 import { suggestionsController } from '../controllers/suggestionsController.js'
 
+import Rails from 'rails-ujs';
+Rails.start();
+
 suggestionsController.initialize();
 
 //const choices = new Choices(element);
@@ -57,6 +60,6 @@ new autoComplete({
   onSelection: feedback => {
     console.log('On select', feedback.selection.value);
     document.querySelector("#autoComplet").value = feedback.selection.value;
-    document.querySelector("#searchForm").submit();
+    Rails.fire(document.querySelector("#searchForm"), 'submit');
   }
 });
