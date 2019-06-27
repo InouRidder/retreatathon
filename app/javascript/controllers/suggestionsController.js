@@ -1,4 +1,6 @@
-const suggestionsController= {
+import Rails from 'rails-ujs';
+
+const suggestionsController = {
   initialize: function() {
     this.input = document.querySelector('.suggestable');
     if (!this.input) return;
@@ -38,7 +40,7 @@ const suggestionsController= {
         currentTags.push(suggestion.innerText)
         this.input.value = currentTags.join(' ')
         document.querySelector('.suggestions').innerHTML = ''
-        document.getElementById('searchForm').submit();
+        Rails.fire(document.getElementById('searchForm'), 'submit');
       })
     })
   },
@@ -51,6 +53,10 @@ const suggestionsController= {
 }
 
 export { suggestionsController };
+
+
+
+
 
 
 

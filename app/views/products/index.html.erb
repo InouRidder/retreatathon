@@ -5,7 +5,7 @@
     <%= image_tag 'logo.svg', class: 'logo' %>
     <h1>Search over <%= ((@number_of_products / 10) * 10) %>+ apps<br>developed by our students</h1>
   </div>
-  <%= form_tag root_path, method: :get, id: "searchForm" do %>
+  <%= form_tag root_path, method: :get, id: "searchForm", remote: true do %>
     <section class="product-filters">
       <div class="search">
         <label>Search by</label>
@@ -22,7 +22,7 @@
 </header>
 
 <div class="wrapper">
-  <section>
+  <section id="replace-products">
     <%= render 'products', products: @products %>
   </section>
 </div>

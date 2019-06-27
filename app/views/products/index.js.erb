@@ -1,0 +1,6 @@
+function insertProducts() {
+  const container = document.querySelector('#replace-products');
+  container.innerHTML = "<%= j render 'products', products: @products %>";
+}
+
+insertProducts();

@@ -9,6 +9,11 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
     @products = Kaminari.paginate_array(@products).page(params[:page]).per(12)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def autocomplete
