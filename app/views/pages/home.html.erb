@@ -14,7 +14,7 @@
 
       <div class="search">
         <label>Add some tags</label>
-        <select class="choice" name="tags" multiple>
+        <select class="choice" name="tags" palceholder="Anything specific?" multiple>
         <% @tags.each do |tag|%>
           <option value="<%= tag.title %>"><%= tag.title %></option>
         <% end %>
