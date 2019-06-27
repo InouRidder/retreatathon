@@ -3,9 +3,6 @@ import Choices from 'choices.js'
 import autoComplete from "@tarekraafat/autocomplete.js";
 import "@tarekraafat/autocomplete.js/dist/css/autoComplete.css";
 import { suggestionsController } from '../controllers/suggestionsController.js'
-import { gipher } from '../controllers/randomImg.js'
-
-gipher();
 
 import Rails from 'rails-ujs';
 Rails.start();

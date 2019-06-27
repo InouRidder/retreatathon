@@ -16,4 +16,4 @@ function gipher() {
 }
 
 
-export {gipher};
+export { gipher };
