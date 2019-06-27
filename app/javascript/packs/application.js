@@ -2,11 +2,14 @@ import "bootstrap";
 import Choices from 'choices.js'
 import autoComplete from "@tarekraafat/autocomplete.js";
 import "@tarekraafat/autocomplete.js/dist/css/autoComplete.css";
+import { suggestionsController } from '../controllers/suggestionsController.js'
+
+suggestionsController.initialize();
 
 //const choices = new Choices(element);
 
 new autoComplete({
-  data: {                             
+  data: {
       src: async () => {
           var query = document.querySelector("#autoComplet").value;
 
@@ -51,7 +54,7 @@ new autoComplete({
       result.innerHTML = "No Results";
       document.querySelector("#autoComplete_results_list").appendChild(result);
   },
-  onSelection: feedback => {  
+  onSelection: feedback => {
     console.log('On select', feedback.selection.value);
     document.querySelector("#autoComplet").value = feedback.selection.value;
     document.querySelector("#searchForm").submit();
