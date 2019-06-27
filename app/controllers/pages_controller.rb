@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
+    @tags = Tag.all
     @number_of_products = Product.all.length
 
     if query_params

@@ -11,9 +11,14 @@
         <label>Search by</label>
         <input tabindex="1" autocomplete="off" id="autoComplet" type="text" name="queries" placeholder="product name, team members, city...">
       </div>
+
       <div class="search">
         <label>Add some tags</label>
-        <input type="text" name="tags" placeholder="Anything specific?">
+        <select class="choice" name="tags" multiple>
+        <% @tags.each do |tag|%>
+          <option value="<%= tag.title %>"><%= tag.title %></option>
+        <% end %>
+        </select>
       </div>
     </section>
   <% end %>
