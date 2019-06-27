@@ -13,14 +13,16 @@
       </div>
       <div class="search">
         <label>Add some tags</label>
-        <input type="text" name="tags" placeholder="Anything specific?">
+        <input type="text" name="tags" placeholder="Anything specific?" class="suggestable" data-suggestions="<%= Tag.all.pluck(:title) %> ">
+        <ul class="suggestions autoComplete_results_list" id="autoComplete_results_list">
+        </ul>
       </div>
     </section>
   <% end %>
 </header>
-  
+
 <div class="wrapper">
-  <section>  
+  <section>
     <%= render 'pages/products', products: @products %>
   </section>
 </div>
