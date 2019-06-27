@@ -23,7 +23,7 @@ const suggestionsController= {
     const suggestElement = document.querySelector('.suggestions');
     suggestElement.innerHTML = ''
     suggestions.forEach(suggestion => {
-      const template = `<li class='suggestion'>${suggestion}</li>`
+      const template = `<li class='suggestion autoComplete_result'>${suggestion}</li>`
       suggestElement.insertAdjacentHTML('afterbegin', template)
     })
     this.setListeners()
@@ -38,6 +38,7 @@ const suggestionsController= {
         currentTags.push(suggestion.innerText)
         this.input.value = currentTags.join(' ')
         document.querySelector('.suggestions').innerHTML = ''
+        document.getElementById('searchForm').submit();
       })
     })
   },
