@@ -51,11 +51,11 @@ new autoComplete({
       element: "li"
   },
   noResults: () => {                     // Action script on noResults      | (Optional)
-      const result = document.createElement("li");
-      result.setAttribute("class", "no_result");
-      result.setAttribute("tabindex", "1");
-      result.innerHTML = "No Results";
-      document.querySelector("#autoComplete_results_list").appendChild(result);
+    const result = document.createElement("li");
+    result.setAttribute("tabindex", "1");
+    result.innerHTML = "No Results";
+    document.querySelector("#autoComplete_results_list").appendChild(result);
+    Rails.fire(document.querySelector("#searchForm"), 'submit');
   },
   onSelection: feedback => {
     console.log('On select', feedback.selection.value);
