@@ -1,7 +1,6 @@
 require 'csv'
 require 'pry'
 require 'open-uri'
-require 'stopwords'
 require 'json'
 
 csv_options = { col_sep: ',', quote_char: '"'}
@@ -17,7 +16,6 @@ def row_to_recurrences(row)
 end
 
 def normalise_text(row)
-  filter = Stopwords::Snowball::Filter.new "en"
   text = row.join(" ").downcase.gsub(/\W/, " ").gsub(/\d/, "").split(" ")
 end
 
