@@ -27,3 +27,7 @@ CSV.foreach(Rails.root.join('db/products.csv'), headers: true, header_converters
   product.members.create(first_name: row[:first_name], last_name: row[:last_name])
 end
 
+Product.all.pluck(:batch).uniq.each do |batch|
+  city = batch.split('#').first
+  Tag.create(title: city)
+end
