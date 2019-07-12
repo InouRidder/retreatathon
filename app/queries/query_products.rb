@@ -19,16 +19,9 @@ class QueryProducts
   end
 
   def filter_by_queries(queries, collection)
-    # if !filters.blank?
-    #   filters = filters.join(" ") if filters.respond_to?(:join)
-    #   collection.search(filters)
-    # else
-    #   collection.all
-    # end
-    
     # # In case of searching by one query OR other query
     results = []
-    if queries.kind_of? Array 
+    if queries.is_a? Array
       queries.each do |query|
         results << collection.search(query)
       end
@@ -37,5 +30,4 @@ class QueryProducts
       collection.search(queries)
     end
   end
-
 end

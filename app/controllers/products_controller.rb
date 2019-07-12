@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   def index
     @number_of_products = Product.all.length
     if query_params
-      @products = QueryProducts.new({ params: query_params }).call
+      @products = QueryProducts.new(params: query_params).call
     else
       @products = Product.all
     end
@@ -18,12 +18,9 @@ class ProductsController < ApplicationController
 
   def autocomplete
     render json: {
-      products: QueryProducts.new({ params: { queries: [params[:q]] } }).call.map(&:name)
+      products: QueryProducts.new(params: { queries: [params[:q]] }).call.map(&:name)
     }
   end
-
-  private
-
 
   private
 
